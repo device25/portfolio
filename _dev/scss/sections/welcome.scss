@@ -1,0 +1,44 @@
+.label-wrapper {
+	background-color: #f6f6f6;
+	padding-top: rem(220px);
+}
+.label {
+	width: rem(300px);
+	margin: auto;
+	text-align: center;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+}
+.user_vertical {
+	display: inline-block;
+	padding: 0;
+	width: rem(145px);
+	margin-top: rem(-70px);
+	margin-bottom: rem(16px);
+	.user__img {
+		margin: 0 0 rem(12px) 0;
+		width: rem(140px);
+		height: rem(140px);
+	}
+	.user__name {
+		font-family: Open Sans, sans-serif;
+		font-size: rem(21px);
+		line-height: rem(26px);
+	}
+}
+.label__bottom {
+	background-color: $blue;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	padding: rem(20px);
+}
+.button_white {
+	font-family: Fira Sans;
+	color: #f6f6f6;
+	border-color: #f6f6f6;
+	&:hover {
+		background-color: #f6f6f6;
+		color: $blue;
+	}
+}

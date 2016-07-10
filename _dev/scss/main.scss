@@ -1,0 +1,37 @@
+// var colors
+$grey: #727272;
+$black: #414141;
+$blue: #33c1e3;
+$red: #e85f61;
+$facebook: #3b5998;
+$googleplus: #dd4b39;
+$pinterest: #cb2027;
+$linkedin: #007bb6;
+$flickr: #ff0084;
+$foursquare: #0072b1;
+$vk: #45668e;
+
+// var proportions
+$container_width: 940px;
+$footer_height: 50px;
+$footer_height_phones: 115px;
+$font-size: 18px;
+
+// adjustments
+@import "_misc/mixins";
+@import "_misc/adjustments";
+@import "_misc/fonts";
+
+// plugins
+@import "../bower/normalize-css/normalize.css";
+@import "../bower/font-awesome/scss/font-awesome";
+@import "_misc/plugins";
+
+// styles
+@import "sections/header";
+@import "sections/sidebar";
+@import "sections/footer";
+@import "sections/about";
+@import "sections/welcome";
+@import "sections/career";
+@import "sections/portfolio";

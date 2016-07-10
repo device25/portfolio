@@ -1,0 +1,156 @@
+.career {
+	@extend %clearfix;
+	padding-left: rem(5px);
+	.title {
+		margin-bottom: rem(23px);
+	}
+}
+.career__left {
+	float: left;
+	@include phones {
+		float: none;
+		margin-bottom: 20px;
+	}
+}
+.career__img {
+	background-position: 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 5%;
+	height: rem(220px);
+	width: rem(220px);
+	img {
+		display: none;
+	}
+	@include phones {
+		margin: 0 auto;
+	}
+}
+.career__right {
+	margin-left: 35%;
+	@include tablets {
+		margin-left: 42%;
+	}
+	@include phones {
+		margin-left: 0;
+	}
+}
+.career__list {
+	color: $grey;
+	font: {
+		family: Fira Sans;
+		weight: 300;
+	}
+	.career__item {
+		&:first-child {
+			&:before{
+				display: none;
+			}
+		}
+		&:last-child {
+			&:after {
+				display: none;
+			}
+		}
+	}
+}
+.career__item {
+	display: block;
+	margin: {
+		bottom: rem(20px);
+		left: rem(40px);
+	}
+	position: relative;
+	transition: .2s;
+	-webkit-transition: .2s;
+	@include phones {
+		margin-left: 0;
+	}
+	&:before, &:after {
+		background: #ddd;
+		content: "";
+		display: block;
+		left: rem(14px);
+		position: absolute;
+		width: 1px;
+		@include phones {
+			display: none;
+		}
+	}
+	&:before {
+		bottom: 50%;
+		margin-bottom: rem(10px);
+		top: 0;
+	}
+	&:after {
+		bottom: rem(-20px);
+		margin-top: rem(10px);
+		top: 50%;
+	}
+	&:hover .career__year {
+		color: $blue;
+		font: {
+			weight: 700;
+		}
+		transition: .2s;
+		-webkit-transition: .2s;
+		&:after {
+			border: 5px solid #94e0f2;
+			right: rem(-25px);
+			top: rem(10px);
+		}
+	}
+	&:hover .career__place {
+		background-color: $blue;
+		color: #f6f6f6;
+		transition: .2s;
+		-webkit-transition: .2s;
+	}
+}
+.career__year {
+	font: {
+		size: rem(14px);
+		weight: 300;
+	}
+	line-height: rem(30px);
+	margin: {
+		right: 0px;
+		top: rem(-15px);
+	}
+	position: absolute;
+	right: 100%;
+	top: 50%;
+	&:after {
+		background-color: $blue;
+		border-radius: 50%;
+		box-sizing: content-box;
+		content: "";
+		height: rem(10px);
+		margin-top: rem(-5px);
+		position: absolute;
+		right: rem(-20px);
+		top: 50%;
+		width: rem(10px);
+		z-index: 1;
+	}
+	@include phones {
+		display: none;
+	}
+}
+.career__place {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+	line-height: rem(26px);
+	margin-left: rem(35px);
+	padding: rem(16px) rem(20px);
+	@include phones {
+		margin-left: 0;
+	}
+}
+.place_bold {
+	font: {
+		size: rem(21px);
+		weight: 400;
+	}
+}

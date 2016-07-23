@@ -72,6 +72,11 @@
 		background-color: $linkedin;
 	}
 }
+.social__link_git {
+	&:hover {
+		background-color: $github_bgc;
+	}
+}
 .social__link_inst {
 	&:hover {
 		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#405de6+5,5851db+15,833ab4+25,c13584+35,e1306c+45,fd1d1d+55,f56040+65,f77737+75,fcaf45+85,ffdc80+95 */

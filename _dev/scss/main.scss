@@ -1,0 +1,20 @@
+//var colors
+$wrapper_bgc: #ebefe2;
+$footer_bgc: rgba(55, 62, 66, 0.851);
+
+//var proportions
+$container_width: 1200px;
+$font-size: 16px;
+$footer_height: 185px;
+
+//plugins
+@import "../../node_modules/normalize.css/normalize.css";
+
+//adjustments
+@import "_misc/mixins";
+@import "_misc/adjustments";
+@import "_misc/fonts";
+
+//styles
+// @import "sections/header";
+// @import "sections/footer";

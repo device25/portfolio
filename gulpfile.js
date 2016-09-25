@@ -1,37 +1,130 @@
 'use strict';
 
-global.$ = {
-  package: require('./package.json'),
-  config: require('./gulp/config'),
-  path: {
-    task: require('./gulp/paths/tasks.js'),
-    jsFoundation: require('./gulp/paths/js.foundation.js'),
-    cssFoundation: require('./gulp/paths/css.foundation.js'),
-    app: require('./gulp/paths/app.js')
+var gulp = require('gulp'),
+  watch = require('gulp-watch'),
+  prefixer = require('gulp-autoprefixer'),
+  uglify = require('gulp-uglify'),
+  sass = require('gulp-sass'),
+  sourcemaps = require('gulp-sourcemaps'),
+  rigger = require('gulp-rigger'),
+  cleanCSS = require('gulp-clean-css'),
+  imagemin = require('gulp-imagemin'),
+  pug = require('gulp-pug'),
+  pngquant = require('imagemin-pngquant'),
+  rimraf = require('rimraf'),
+  browserSync = require('browser-sync'),
+  reload = browserSync.reload;
+
+var path = {
+  dest: {
+    html: 'prod/',
+    css: 'prod/css/',
+    js: 'prod/js/',
+    img: 'prod/img/',
+    fonts: 'prod/fonts/'
   },
-  gulp: require('gulp'),
-  rimraf: require('rimraf'),
-  browserSync: require('browser-sync').create(),
-  gp: require('gulp-load-plugins')()
+  src: {
+    html: '_dev/pug/pages/**/*.pug',
+    css: '_dev/scss/main.scss',
+    js: '_dev/js/main.js',
+    img: '_dev/img/**/*.*',
+    fonts: '_dev/fonts/**/*.*'
+  },
+  watch: {
+    html: '_dev/pug/**/*.pug',
+    css: '_dev/scss/**/*.scss',
+    js: '_dev/js/**/*.js',
+    img: '_dev/img/**/*.*',
+    fonts: '_dev/fonts/**/*.*'
+  },
+  clean: 'prod'
 };
 
-$.path.task.forEach(function (taskPath) {
-  require(taskPath)();
+var config = {
+  server: {
+    baseDir: "prod"
+  },
+  open: false
+};
+
+gulp.task('clean', function (cb) {
+  return rimraf(path.clean, cb);
 });
 
-$.gulp.task('default', $.gulp.series(
-  'clean',
-  $.gulp.parallel(
-    'sass',
-    'pug',
-    'js:foundation',
-    'js:process',
-    'copy:image',
-    'css:foundation',
-    'sprite:svg'
-  ),
-  $.gulp.parallel(
-    'watch',
-    'serve'
+gulp.task('html:build', function () {
+  return gulp.src(path.src.html)
+    .pipe(pug({pretty: true}))
+    .pipe(gulp.dest(path.dest.html))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task('css:build', function () {
+  return gulp.src(path.src.css)
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(prefixer({browsers: ['last 2 versions', '> 1%']}))
+    .pipe(cleanCSS())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(path.dest.css))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task('js:build', function () {
+  return gulp.src(path.src.js)
+    .pipe(rigger())
+    .pipe(sourcemaps.init())
+    .pipe(uglify())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(path.dest.js))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task('img:build', function () {
+  return gulp.src(path.src.img)
+    .pipe(imagemin({
+      progressive: true,
+      svgoPlugins: [{removeViewBox: false}],
+      use: [pngquant()],
+      interlaced: true
+    }))
+    .pipe(gulp.dest(path.dest.img))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task('fonts:build', function () {
+  return gulp.src(path.src.fonts)
+    .pipe(gulp.dest(path.dest.fonts));
+});
+
+gulp.task('build',
+  gulp.series(
+    'clean',
+    gulp.parallel(
+      'html:build',
+      'css:build',
+      'js:build',
+      'fonts:build',
+      'img:build'
+    )
+  )
+);
+
+gulp.task('webserver', function () {
+  browserSync(config);
+});
+
+gulp.task('watch', function () {
+  watch(path.watch.html, gulp.series('html:build'));
+  watch(path.watch.css, gulp.series('css:build'));
+  watch(path.watch.fonts, gulp.series('fonts:build'));
+  watch(path.watch.img, gulp.series('img:build'));
+  watch(path.watch.js, gulp.series('js:build'));
+});
+
+gulp.task('default', gulp.series(
+  'build',
+  gulp.parallel(
+    'webserver',
+    'watch'
   )
 ));

@@ -1,0 +1,132 @@
+.wrapper_welcome {
+  position: relative;
+  min-width: 100%;
+  min-height: 100%;
+  background: url('../img/water.jpg') 50%;
+  background-size: cover;
+}
+
+.welcome__header {
+  padding: 20px 15px;
+  text-align: right;
+  margin-bottom: 35px;
+}
+
+.welcome__authorization {
+  padding: 10px 30px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 50px;
+  font-weight: 500;
+  color: #fff;
+  transition: .4s;
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(#487e38, .8);
+    transition: .4s;
+  }
+  &:focus {
+    outline-color: #487e38;
+  }
+}
+
+.welcome {
+  width: 380px;
+  margin: auto;
+  border-radius: 5px;
+  background-color: rgba(18, 38, 32, .6);
+  padding-top: 40px;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+
+.welcome__img {
+  width: 140px;
+  height: 140px;
+  margin: auto auto 15px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: 50%;
+  img {
+    display: none;
+  }
+}
+
+.welcome__name {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.welcome__desc {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(#fff, 0.8);
+  margin-bottom: 30px;
+}
+
+.socials__item {
+  display: inline-block;
+  vertical-align: bottom;
+  margin-right: 25px;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.socials {
+  margin-bottom: 40px;
+}
+
+.socials__link {
+  display: block;
+  font-weight: 500;
+  &:hover {
+    .socials__img {
+      fill: #4e8839;
+      transition: .4s;
+    }
+  }
+}
+
+.socials__img {
+  fill: #8c9996;
+  transition: .4s;
+}
+
+.pages__list {
+  display: table;
+  width: 100%;
+}
+
+.pages__item {
+  display: table-cell;
+  border-right: 2px solid #a0ba9e;
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.pages__link {
+  display: block;
+  font-size: 16px;
+  padding: 10px 30px;
+  color: #fff;
+  background-color: #5f8c52;
+  text-decoration: none;
+  transition: .4s;
+  &:hover {
+    background-color: #4a813b;
+    transition: .4s;
+  }
+}
+
+.welcome__footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 40px;
+}

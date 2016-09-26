@@ -14,7 +14,7 @@ $footer_height: 185px;
 @import "_misc/mixins";
 @import "_misc/adjustments";
 @import "_misc/fonts";
+@import "_misc/sprite";
 
 //styles
-// @import "sections/header";
-// @import "sections/footer";
+@import "sections/welcome-page";

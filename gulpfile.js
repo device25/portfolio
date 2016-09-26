@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp'),
+  spritesmith = require('gulp.spritesmith'),
   watch = require('gulp-watch'),
   prefixer = require('gulp-autoprefixer'),
   uglify = require('gulp-uglify'),
@@ -20,6 +21,7 @@ var path = {
     html: 'prod/',
     css: 'prod/css/',
     js: 'prod/js/',
+    spriteScss: '_dev/scss/_misc',
     img: 'prod/img/',
     fonts: 'prod/fonts/'
   },
@@ -27,13 +29,15 @@ var path = {
     html: '_dev/pug/pages/**/*.pug',
     css: '_dev/scss/main.scss',
     js: '_dev/js/main.js',
-    img: '_dev/img/**/*.*',
+    sprite: '_dev/img/sprite/*.*',
+    img: ['_dev/img/**/*.*', '!_dev/img/sprite/*.*'],
     fonts: '_dev/fonts/**/*.*'
   },
   watch: {
     html: '_dev/pug/**/*.pug',
     css: '_dev/scss/**/*.scss',
     js: '_dev/js/**/*.js',
+    sprite: '_dev/img/sprite/*.*',
     img: '_dev/img/**/*.*',
     fonts: '_dev/fonts/**/*.*'
   },
@@ -53,7 +57,9 @@ gulp.task('clean', function (cb) {
 
 gulp.task('html:build', function () {
   return gulp.src(path.src.html)
-    .pipe(pug({pretty: true}))
+    .pipe(pug({pretty: true}).on('error', function (e) {
+      console.error(e);
+    }))
     .pipe(gulp.dest(path.dest.html))
     .pipe(reload({stream: true}));
 });
@@ -77,6 +83,21 @@ gulp.task('js:build', function () {
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(path.dest.js))
     .pipe(reload({stream: true}));
+});
+
+gulp.task('sprite:build', function () {
+  var spriteData = gulp.src(path.src.sprite)
+    .pipe(spritesmith({
+      imgName: 'sprite.png',
+      cssName: 'sprite.scss',
+      cssFormat: 'scss',
+      algorithm: 'binary-tree'
+    }));
+
+  spriteData.img.pipe(gulp.dest(path.dest.img));
+  spriteData.css.pipe(gulp.dest(path.dest.spriteScss));
+
+  return spriteData;
 });
 
 gulp.task('img:build', function () {
@@ -104,6 +125,7 @@ gulp.task('build',
       'css:build',
       'js:build',
       'fonts:build',
+      'sprite:build',
       'img:build'
     )
   )
@@ -117,6 +139,7 @@ gulp.task('watch', function () {
   watch(path.watch.html, gulp.series('html:build'));
   watch(path.watch.css, gulp.series('css:build'));
   watch(path.watch.fonts, gulp.series('fonts:build'));
+  watch(path.watch.sprite, gulp.series('sprite:build'));
   watch(path.watch.img, gulp.series('img:build'));
   watch(path.watch.js, gulp.series('js:build'));
 });

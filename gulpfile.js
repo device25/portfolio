@@ -1,20 +1,20 @@
 'use strict';
 
-var gulp = require('gulp'),
-  spritesmith = require('gulp.spritesmith'),
-  watch = require('gulp-watch'),
-  prefixer = require('gulp-autoprefixer'),
-  uglify = require('gulp-uglify'),
-  sass = require('gulp-sass'),
-  sourcemaps = require('gulp-sourcemaps'),
-  rigger = require('gulp-rigger'),
-  cleanCSS = require('gulp-clean-css'),
-  imagemin = require('gulp-imagemin'),
-  pug = require('gulp-pug'),
-  pngquant = require('imagemin-pngquant'),
-  rimraf = require('rimraf'),
-  browserSync = require('browser-sync'),
-  reload = browserSync.reload;
+var gulp = require('gulp');
+var spritesmith = require('gulp.spritesmith');
+var watch = require('gulp-watch');
+var prefixer = require('gulp-autoprefixer');
+var uglify = require('gulp-uglify');
+var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
+var rigger = require('gulp-rigger');
+var cleanCSS = require('gulp-clean-css');
+var imagemin = require('gulp-imagemin');
+var pug = require('gulp-pug');
+var pngquant = require('imagemin-pngquant');
+var rimraf = require('rimraf');
+var browserSync = require('browser-sync');
+var reload = browserSync.reload;
 
 var path = {
   dest: {

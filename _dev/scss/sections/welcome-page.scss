@@ -1,16 +1,16 @@
 .wrapper_welcome {
+  display: flex;
+  flex-direction: column;
   position: relative;
   min-width: 100%;
   min-height: 100%;
   background: url('../img/water.jpg') 50%;
   background-size: cover;
-  padding-bottom: 100px;
 }
 
 .welcome__header {
   padding: 20px 15px;
   text-align: right;
-  margin-bottom: 35px;
 }
 
 .welcome__authorization {
@@ -123,9 +123,6 @@
 }
 
 .welcome__footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
   text-align: center;
   font-weight: 400;
   color: #fff;

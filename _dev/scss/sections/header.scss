@@ -1,0 +1,68 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: url(/img/water.jpg) 50%;
+  background-size: cover;
+}
+
+.header__top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 30px 25px;
+}
+
+.socials_white {
+  margin-bottom: 0;
+  .socials__img {
+    fill: #fff;
+  }
+}
+
+.nav__button {
+  border: none;
+  background-color: transparent;
+}
+
+.header__middle {
+  position: relative;
+  margin: auto;
+  &:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -15%;
+    bottom: -25%;
+    width: 1200px;
+    background-image: url('/img/portfolio_header.svg');
+    background-size: cover;
+    z-index: 10;
+  }
+}
+
+.welcome_transparent {
+  position: relative;
+  padding-top: 0;
+  background-color: transparent;
+  z-index: 100;
+  .welcome__desc {
+    margin-bottom: 0;
+  }
+}
+
+.header__bottom {
+  margin-bottom: 70px;
+  text-align: center;
+}
+
+.header__scroll {
+  position: relative;
+  border: none;
+  background-color: transparent;
+  z-index: 100;
+  svg {
+    opacity: .7;
+  }
+}

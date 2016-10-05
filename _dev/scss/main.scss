@@ -1,11 +1,9 @@
 //var colors
 $wrapper_bgc: #ebefe2;
-$footer_bgc: rgba(55, 62, 66, 0.851);
 
 //var proportions
 $container_width: 1200px;
 $font-size: 16px;
-$footer_height: 185px;
 
 //plugins
 @import "../../node_modules/normalize.css/normalize.css";
@@ -18,3 +16,6 @@ $footer_height: 185px;
 
 //styles
 @import "sections/welcome-page";
+@import "sections/footer";
+@import "sections/header";
+@import "sections/about";

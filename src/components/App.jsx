@@ -1,11 +1,11 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { HashRouter, Switch, Route } from 'react-router-dom'
 import WelcomePage from './WelcomePage'
 import MainPage from './MainPage'
 import NoMatch from './NoMatch'
 
 const App = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Switch>
       <Route exact path="/" component={ WelcomePage }/>
       <Route path="/about" component={ MainPage }/>
@@ -13,7 +13,7 @@ const App = () => (
       <Route path="/portfolio" component={ MainPage }/>
       <Route component={ NoMatch }/>
     </Switch>
-  </BrowserRouter>
+  </HashRouter>
 );
 
 export default App

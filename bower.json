@@ -1,7 +1,0 @@
-{
-  "name": "ndrewdev",
-  "dependencies": {
-    "normalize-css": "normalize.css#^4.2.0",
-    "font-awesome": "^4.6.3"
-  }
-}

@@ -1,68 +1,77 @@
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 html {
-	height: 100%;
-	width: 100%;
-	font-size: $font-size;
-	@include laptop {
-		font-size: $font-size - 2;
-	}	
-	@include phones {
-		font-size: $font-size - 4;
-	}
+  height: 100%;
+  width: 100%;
+  font-size: $font-size;
+  @include laptop {
+    font-size: $font-size - 2;
+  }
+  @include phones {
+    font-size: $font-size - 4;
+  }
 }
+
 body {
-	height: 100%;
-	width: 100%;
-	line-height: 1.42;
+  height: 100%;
+  width: 100%;
+  line-height: 1.42;
 }
+
 ul {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 }
+
 li {
-	list-style: none;
+  list-style: none;
 }
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-	margin: 0;
+  margin: 0;
 }
+
 .wrapper {
-	height: auto;
-	min-height: 100%;
-	margin-bottom: -$footer_height;
-	@include phones {
-		margin-bottom: -$footer_height_phones;
-	}
-	background-color: #f6f6f6;
-	overflow: hidden;
+  height: auto;
+  min-height: 100%;
+  margin-bottom: -$footer_height;
+  @include phones {
+    margin-bottom: -$footer_height_phones;
+  }
+  background-color: #f6f6f6;
+  overflow: hidden;
 }
+
 .wrapper:after {
-	content: "";
-	display: block;
-	height: $footer_height;
-	@include phones {
-		height: $footer_height_phones;
-	}
-	margin-top: rem(20px);
+  content: "";
+  display: block;
+  height: $footer_height;
+  @include phones {
+    height: $footer_height_phones;
+  }
+  margin-top: rem(20px);
 }
+
 .footer {
-	height: $footer_height;
-	@include phones {
-		height: $footer_height_phones;
-	}
+  height: $footer_height;
+  @include phones {
+    height: $footer_height_phones;
+  }
 }
+
 .container {
-	@extend %clearfix;
-	width: $container_width;
-	margin: auto;
-	@include laptop {
-		width: 100%;
-		padding: 0 3%;
-	}
+  @extend %clearfix;
+  width: $container_width;
+  margin: auto;
+  @include laptop {
+    width: 100%;
+    padding: 0 3%;
+  }
 }

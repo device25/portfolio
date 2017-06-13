@@ -1,31 +1,36 @@
 %clearfix {
-	&:after {
-		content: "";
-		display: block;
-		clear: both;
-	}
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
 }
+
 //responsive
 @function rem($px) {
-	@return $px / $font-size + 0rem;
+  @return $px / $font-size + 0rem;
 }
+
 @mixin desktop {
-	@media screen and (max-width: 1200px) {
-		@content;
-	}
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
 }
+
 @mixin laptop {
-	@media screen and (max-width: 992px) {
-		@content;
-	}
+  @media screen and (max-width: 992px) {
+    @content;
+  }
 }
+
 @mixin tablets {
-	@media screen and (max-width: 768px) {
-		@content;
-	}
+  @media screen and (max-width: 768px) {
+    @content;
+  }
 }
+
 @mixin phones {
-	@media screen and (max-width: 480px) {
-		@content;
-	}
+  @media screen and (max-width: 480px) {
+    @content;
+  }
 }

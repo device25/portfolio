@@ -24,7 +24,7 @@ $font-size: 18px;
 @import "_misc/fonts";
 
 // plugins
-@import "../bower/normalize-css/normalize.css";
+@import "/node_modules/normalize.css/normalize.css";
 @import "../bower/font-awesome/scss/font-awesome";
 @import "_misc/plugins";
 
